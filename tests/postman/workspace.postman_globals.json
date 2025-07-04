@@ -1,0 +1,14 @@
+{
+	"id": "30a1796f-7926-4c87-8fb5-b4af4e046a8e",
+	"values": [
+		{
+			"key": "url",
+			"value": "http://10.21.6.31:81",
+			"type": "default"
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-07-04T09:54:33.714Z",
+	"_postman_exported_using": "Postman/11.52.3"
+}

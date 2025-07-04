@@ -1,0 +1,17 @@
+{
+  "name": "testpostman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+"test:api": "newman run tests/postman/TestsAPIvoitures_postman_collection.json -e tests/postman/url.postman_environment.json tests/postman/workspace.postman_globals.json --reporters cli"  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "newman": "^6.2.1"
+  }
+}

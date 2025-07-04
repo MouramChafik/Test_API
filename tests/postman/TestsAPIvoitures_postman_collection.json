@@ -1,0 +1,1461 @@
+{
+	"info": {
+		"_postman_id": "da961fb3-081f-4a7a-9b4e-ccd5682ebfe3",
+		"name": "Tests API voitures",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31429893",
+		"_collection_link": "https://martian-comet-250238.postman.co/workspace/api-test~c146289f-c24b-4317-a791-95035d18c0ec/collection/31429893-da961fb3-081f-4a7a-9b4e-ccd5682ebfe3?action=share&source=collection_link&creator=31429893"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/utilisateurs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"utilisateurs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"id_utilisateur\", jsonData.id);",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"test\",\r\n    \"prenom\": \"test\",\r\n    \"email\": \"testt@example.com\",\r\n    \"mot_de_passe\": \"password123\",\r\n    \"adresse\": \"10 Rue des Lilas\",\r\n    \"code_postal\": \"75019\",\r\n    \"ville\": \"Paris\",\r\n    \"pays\": \"France\",\r\n    \"telephone\": \"0612345678\",\r\n    \"date_naissance\": \"1985-03-15\",\r\n    \"permis_conduire\": \"1234567890123456\",\r\n    \"date_creation\": \"2025-07-03 09:57:45\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/utilisateurs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"utilisateurs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/utilisateurs/{{id_utilisateur}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"utilisateurs",
+								"{{id_utilisateur}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"chafik\",\r\n    \"prenom\": \"toto\",\r\n    \"email\": \"test@example.fr\",\r\n    \"mot_de_passe\": \"password123\",\r\n    \"adresse\": \"10 Rue des Lilas\",\r\n    \"code_postal\": \"75019\",\r\n    \"ville\": \"Paris\",\r\n    \"pays\": \"France\",\r\n    \"telephone\": \"0612345678\",\r\n    \"date_naissance\": \"1985-03-15\",\r\n    \"permis_conduire\": \"1234567890123456\",\r\n    \"date_creation\": \"2025-07-03 11:12:10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/utilisateurs/{{id_utilisateur}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"utilisateurs",
+								"{{id_utilisateur}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/utilisateurs/{{id_utilisateur}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"utilisateurs",
+								"{{id_utilisateur}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"id_categorie\", jsonData.id);",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Berlina110\",\r\n    \"description\": \"Voiture confortable pour longs trajets\",\r\n    \"prix_journalier\": \"50.00\",\r\n    \"image\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/categories/{{id_categorie}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"categories",
+								"{{id_categorie}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Berlina 90\",\r\n    \"description\": \"Voiture confortable pour longs trajets\",\r\n    \"prix_journalier\": \"50.00\",\r\n    \"image\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/categories/{{id_categorie}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"categories",
+								"{{id_categorie}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/categories/{{id_categorie}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"categories",
+								"{{id_categorie}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Véhicules",
+			"item": [
+				{
+					"name": "Get One",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/vehicules",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"vehicules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"id_vehicules\", jsonData.id);",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "apikey",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhYXJ4ZGt6emVudnBqeXdyY2FkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0ODgyOTksImV4cCI6MjA2NjA2NDI5OX0.ueqEJuzXx57snaMB2PtxOWcyGqvQSmkkbs7k4ZfhxPE",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhYXJ4ZGt6emVudnBqeXdyY2FkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0ODgyOTksImV4cCI6MjA2NjA2NDI5OX0.ueqEJuzXx57snaMB2PtxOWcyGqvQSmkkbs7k4ZfhxPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id_vehicule\": 2,\n        \"id_categorie\": 2,\n        \"marque\": \"Peugeot\",\n        \"modele\": \"310\",\n        \"annee\": 2020,\n        \"immatriculation\": \"CC-446-DD\",\n        \"kilometrage\": 30000,\n        \"nombre_places\": 5,\n        \"climatisation\": 1,\n        \"gps\": 1,\n        \"transmission\": \"Automatique\",\n        \"carburant\": \"Diesel\",\n        \"disponible\": 1,\n        \"image\": \"308.jpg\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/vehicules",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"vehicules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/vehicules/{{id_vehicules}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"vehicules",
+								"{{id_vehicules}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_vehicule\": 50,\r\n    \"id_categorie\": 2,\r\n    \"marque\": \"Peugeot\",\r\n    \"modele\": \"310\",\r\n    \"annee\": 2020,\r\n    \"immatriculation\": \"CC-146-DD\",\r\n    \"kilometrage\": 30000,\r\n    \"nombre_places\": 5,\r\n    \"climatisation\": 1,\r\n    \"gps\": 1,\r\n    \"transmission\": \"Automatique\",\r\n    \"carburant\": \"Diesel\",\r\n    \"disponible\": 1,\r\n    \"image\": \"308.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/vehicules/{{id_vehicules}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"vehicules",
+								"{{id_vehicules}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/vehicules/{{id_vehicules}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"vehicules",
+								"{{id_vehicules}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agences",
+			"item": [
+				{
+					"name": "Get all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/agences",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"agences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"id_agences\", jsonData.id);",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n        \"nom\": \"Nouvelle Agence-22\",\r\n        \"adresse\": \"456 Rue secondaire\",\r\n        \"code_postal\": \"67000\",\r\n        \"ville\": \"Strasbourg\",\r\n        \"pays\": \"France\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/agences",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"agences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/agences/{{id_agences}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"agences",
+								"{{id_agences}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_agence\": 18,\r\n    \"nom\": \"Nouvelle Agence-222\",\r\n    \"adresse\": \"456 Rue secondaire\",\r\n    \"code_postal\": \"67000\",\r\n    \"ville\": \"Strasbourg\",\r\n    \"pays\": \"France\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/agences/{{id_agences}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"agences",
+								"{{id_agences}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/agences/{{id_agences}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"agences",
+								"{{id_agences}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Disponibilités",
+			"item": [
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/disponibilites",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"disponibilites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"id_disponibilites\", jsonData.id);",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"id_disponibilites\", jsonData.id);",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id_disponibilite\": 5,\r\n        \"id_vehicule\": 5,\r\n        \"id_agence\": 3,\r\n        \"quantite\": 10\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/disponibilites",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"disponibilites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/disponibilites/{{id_disponibilites}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"disponibilites",
+								"{{id_disponibilites}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id_disponibilite\": 45,\r\n        \"id_vehicule\": 55,\r\n        \"id_agence\": 4,\r\n        \"quantite\": 20\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/disponibilites/{{id_disponibilites}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"disponibilites",
+								"{{id_disponibilites}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/disponibilites/{{id_disponibilites}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"disponibilites",
+								"{{id_disponibilites}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Locations",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/locations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"id_locations\", jsonData.id);",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id_utilisateur\": 5,\r\n        \"id_vehicule\": 4,\r\n        \"id_agence_depart\": 1,\r\n        \"id_agence_retour\": 1,\r\n        \"date_debut\": \"2025-04-07\",\r\n        \"date_fin\": \"2025-05-14\",\r\n        \"prix_total\": \"477.00\",\r\n        \"statut\": \"Confirmée\",\r\n        \"date_creation\": \"2025-07-03 09:58:04\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/locations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/locations/{{id_locations}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"locations",
+								"{{id_locations}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_location\": 30,\r\n    \"id_utilisateur\": 5,\r\n    \"id_vehicule\": 4,\r\n    \"id_agence_depart\": 1,\r\n    \"id_agence_retour\": 1,\r\n    \"date_debut\": \"2025-04-07\",\r\n    \"date_fin\": \"2025-05-14\",\r\n    \"prix_total\": \"687.00\",\r\n    \"statut\": \"Confirmée\",\r\n    \"date_creation\": \"2025-07-04 10:50:10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/locations/{{id_locations}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"locations",
+								"{{id_locations}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_location\": 30,\r\n    \"id_utilisateur\": 5,\r\n    \"id_vehicule\": 4,\r\n    \"id_agence_depart\": 1,\r\n    \"id_agence_retour\": 1,\r\n    \"date_debut\": \"2025-04-07\",\r\n    \"date_fin\": \"2025-05-14\",\r\n    \"prix_total\": \"587.00\",\r\n    \"statut\": \"Confirmée\",\r\n    \"date_creation\": \"2025-07-04 10:50:10\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/API/locations/{{id_locations}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"locations",
+								"{{id_locations}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Avis",
+			"item": [
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/avis",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"avis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"id_avis\", jsonData.id);",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id_avis\": 1,\r\n        \"id_location\": 8,\r\n        \"note\": 2,\r\n        \"commentaire\": \"Rien à redire, tout s'est bien passé.\",\r\n        \"date_creation\": \"2025-06-17 00:00:00\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/avis",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"avis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/avis/{{id_avis}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"avis",
+								"{{id_avis}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_avis\": 28,\r\n    \"id_location\": 8,\r\n    \"note\": 2,\r\n    \"commentaire\": \"Rien à redire, tout s'est bien passé Merci !.\",\r\n    \"date_creation\": \"2025-07-04 11:02:55\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/API/avis/{{id_avis}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"avis",
+								"{{id_avis}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/API/avis/{{id_avis}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"API",
+								"avis",
+								"{{id_avis}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id_utilisateur",
+			"value": ""
+		},
+		{
+			"key": "id_categorie",
+			"value": ""
+		},
+		{
+			"key": "id_vehicules",
+			"value": ""
+		},
+		{
+			"key": "id_agences",
+			"value": ""
+		},
+		{
+			"key": "id_disponibilites",
+			"value": ""
+		},
+		{
+			"key": "url",
+			"value": ""
+		},
+		{
+			"key": "id_locations",
+			"value": ""
+		},
+		{
+			"key": "id_avis",
+			"value": ""
+		}
+	]
+}
